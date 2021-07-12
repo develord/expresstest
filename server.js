@@ -1,8 +1,6 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const cors = require('cors')
-
+var express = require('express')
+var cors = require('cors')
+var app = express()
 const oraganigram = {
     name: "Naruto uzumaki",
     title: "CTO",
@@ -78,19 +76,13 @@ const oraganigram = {
       }
     ]
 }
-
 app.use(cors())
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header('Access-Control-Allow-Methods: GET, POST, OPTIONS')
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    next()
-  });
 
 app.get('/oraganigram', function(req, res) {
     console.log("GET From SERVER")
     res.send(oraganigram)
 })
 
-app.listen(6069)
-
+app.listen(6069, function () {
+  console.log('CORS-enabled web server listening on port 6069')
+})
