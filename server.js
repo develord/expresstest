@@ -1,7 +1,7 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var app = express()
-
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const cors = require('cors')
 //Allow all requests from all domains & localhost
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -12,8 +12,9 @@ app.all('/*', function(req, res, next) {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(cors())
 
-var oraganigram = {
+const oraganigram = {
     name: "Naruto uzumaki",
     title: "CTO",
     img: "https://iconape.com/wp-content/files/hb/154859/svg/154859.svg",
